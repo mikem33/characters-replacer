@@ -1,0 +1,45 @@
+{
+  "name": "characters-replace",
+  "version": "1.0.0",
+  "description": "An HTML Boilerplate to start a project.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Miguel Morera",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "normalize.css": "^8.0.0",
+    "picturefill": "^3.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikem33/pandora-boilerplate.git"
+  },
+  "keywords": [
+    "html5",
+    "boilerplate",
+    "pandora"
+  ],
+  "bugs": {
+    "url": "https://github.com/mikem33/pandora-boilerplate/issues"
+  },
+  "homepage": "https://github.com/mikem33/pandora-boilerplate",
+  "devDependencies": {
+    "critical": "^0.8.4",
+    "del": "^2.2.2",
+    "fancy-log": "^1.3.2",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.9.4",
+    "gulp-concat": "^2.6.1",
+    "gulp-modernizr": "^2.0.4",
+    "gulp-notify": "^2.2.0",
+    "gulp-rename": "^1.2.3",
+    "gulp-stylus": "^2.7.0",
+    "gulp-uglify": "^2.1.2",
+    "gulp-watch": "^4.3.11",
+    "nib": "^1.1.2",
+    "run-sequence": "^1.2.2"
+  }
+}
