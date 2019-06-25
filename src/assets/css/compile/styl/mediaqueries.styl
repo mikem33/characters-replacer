@@ -7,11 +7,66 @@
 @media (min-width: 768px)
     /* $min-width: $768px */
     
+    .replace
+        &__header 
+            .title
+                font-size 5vw
+                line-height 5vw
+            h2
+                font-size 3vw
+                margin-bottom 1vw
+
     .replace__container
         .content
             display grid
-            grid-gap 50px
+            grid-gap 2vw
             grid-template-columns 1fr 1fr
+    
+    .replace__form
+        label
+            font-size 1.5vw
+            margin-bottom 1vw
+        input[type=text], textarea
+            font-size 2vw
+        button
+            font-size 2vw
+
+    .replace__char-to
+        label
+            max-width 32vw
+
+    .replace__char-by
+        label
+            max-width 32.5vw
+    
+    .replace__result
+        p
+            font-size 2.5vw
+        button
+            font-size 2vw
+
+@media (max-width: 767px)
+    /* $max-width: $767px */
+    
+    .replace__container
+        padding 10vw 2vw
+
+    .replace
+        &__header 
+            .title
+                fontSize(45)
+                line-height 45px
+
+    .replace__form
+        margin-bottom 2em
+        fieldset, label
+            margin-bottom 1em
+        textarea
+            min-height 100px
+    
+    .replace__result
+        min-height 100px
+        
 
 //  Print styles
 

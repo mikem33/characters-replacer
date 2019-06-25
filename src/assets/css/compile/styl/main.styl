@@ -7,7 +7,7 @@
 body
     color $black
     background-color $yellow
-    font-family 'Chivo', sans-serif
+    font-family 'Poppins', sans-serif
 
 main
     height 100vh 
@@ -16,33 +16,28 @@ main
 .replace
     &__header 
         .title
-            font-size 6vw
             margin-bottom 0
         h2
-            font-size 3vw
             font-style italic
             font-weight normal
             
 .replace__container
-    padding 50px
+    padding 2vw
 
 .replace__form 
     label
         display block
-        font-size 1.5vw
         font-weight bold
-        margin-bottom 1em
         span
             font-style italic
             font-weight normal
     fieldset
-        margin-bottom 1em
+        margin-bottom 1vw
     input[type=text], textarea
         width 100%
-        padding 1em
+        padding 1vw
         color $black
         border-top 0 
-        font-size 2vw
         border-left 0
         border-right 0
         border 2px dashed $black
@@ -52,9 +47,8 @@ main
             color darken($yellow, 15%)
     button
         width 100%
-        padding 1em
+        padding 1vw
         color $black
-        font-size 2vw
         cursor pointer
         font-weight bold
         text-align center
@@ -67,30 +61,19 @@ main
             background-color $black
             transition all $pseudotransition
 
-.replace__char-to
-    label
-        max-width 32vw
-
-.replace__char-by
-    label
-        max-width 32.5vw
-
 .replace__result
-    padding 1.5em
-    margin-top 5.5vw
+    padding 1.5vw
     position relative
     border 2px dashed $black
     background-color lighten($yellow, 15%)
     p
-        font-size 4vw
         margin-bottom 0
         word-break break-all
     button
         right 15px
         bottom 15px
         color white
-        font-size 2vw
-        padding 10px 20px
+        padding 1vw 1.5vw
         position absolute
         display inline-block
         border 1px solid $black
@@ -101,7 +84,7 @@ main
     left 100%
     color white
     position fixed
-    padding 10px 15px
+    padding 1vw 1.5vw
     background-color $black
     transition transform $basetransition
     &.show
