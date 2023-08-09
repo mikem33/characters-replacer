@@ -1,5 +1,4 @@
-var nib         = require('nib'),
-    del         = require('del'),
+var del         = require('del'),
     gulp        = require('gulp'),
     log         = require('fancy-log'),
     watch       = require('gulp-watch'),
@@ -7,13 +6,12 @@ var nib         = require('nib'),
     rename      = require("gulp-rename"),
     concat      = require('gulp-concat'),
     uglify      = require('gulp-uglify'),
-    notify      = require("gulp-notify"),
+    notify      = require('gulp-notify'),
     cleanCSS    = require('gulp-clean-css'),
-    modernizr   = require('gulp-modernizr'),
-    runSequence = require('run-sequence').use(gulp);
+    runSequence = require('gulp4-run-sequence');
 
 // The Init task it's for copy the javascript dependencies to the src folder.
-gulp.task('init', ['modernizr'], function() {
+gulp.task('init', function() {
     gulp.src('node_modules/picturefill/dist/picturefill.min.js')
         .pipe(gulp.dest('src/assets/js'))
     gulp.src('node_modules/jquery/dist/jquery.js')
@@ -23,48 +21,41 @@ gulp.task('init', ['modernizr'], function() {
         .pipe(notify('The initialization of the project has been succesful! (PictureFill/jQuery/Normalize) copied to its folders.'))
 });
 
-gulp.task('modernizr', function() {
-    return gulp.src('src/assets/js/compile/*.js')
-        .pipe(modernizr(require('./modernizr.json')))
-        .pipe(gulp.dest('src/assets/js/compile/vendor'))
-        .pipe(notify('Modernizr has been generated.'))
-});
-
 // Compile Stylus CSS
-gulp.task('style', function () {
+gulp.task('style', function (done) {
     gulp.src('src/assets/css/compile/styl/main.styl')
         .pipe(stylus({
-            use: nib(),
             'include css': true
         }))
         .pipe(cleanCSS())
         .pipe(rename('style.css'))
         .pipe(gulp.dest('src/assets/css'))
-        .pipe(notify('CSS Compiled!'))
-    ;
+        .pipe(notify('CSS Compiled!'));
+    done();
 });
 
 // Generate Javascript
-gulp.task('js', function(){
+gulp.task('js', function(done){
     return gulp.src(['src/assets/js/compile/vendor/jquery.js','src/assets/js/compile/vendor/*.js','src/assets/js/compile/*.js'])
         .pipe(concat('javascript.js'))
         .pipe(gulp.dest('src/assets/js'))
         .pipe(notify('JS Compiled!'))
         .pipe(uglify())
         .pipe(gulp.dest('src/assets/js'));
+    done();
 });
 
 // Watch
 gulp.task('watch', function() {
-    gulp.watch('src/assets/js/compile/*.js', ['js']);
-    gulp.watch('src/assets/css/compile/styl/*.styl', ['style']);
+    gulp.watch('src/assets/js/compile/*.js', gulp.series('js'));
+    gulp.watch('src/assets/css/compile/styl/*.styl', gulp.series('style'));
 });
 
 gulp.task('cleanBuild', function () {
     return del('build');
 });
 
-gulp.task('copy', function() {
+gulp.task('copy', function(done) {
     gulp.src('src/*.*')
         .pipe(gulp.dest('build/'))
     gulp.src('src/assets/css/style.css')
@@ -73,12 +64,18 @@ gulp.task('copy', function() {
         .pipe(gulp.dest('build/assets/js/'))
     gulp.src('src/assets/img/**/*')
         .pipe(gulp.dest('build/assets/img/'))
-        .pipe(notify('All the resources has been copied to the build folder.'))
+        .pipe(notify('All the resources has been copied to the build folder.'));
+    done();
 });
 
 gulp.task('build', function(callback) {
-    runSequence('style', 'js', 'copy', callback);
+    runSequence(
+        'style', 
+        'js', 
+        'copy', 
+        callback
+    );
 });
 
 // Default gulp task to run 
-gulp.task('default', ['watch']);
+gulp.task('default', gulp.series('watch'));
