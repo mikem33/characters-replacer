@@ -47,18 +47,17 @@ main
     button
         width 100%
         padding 1vw
-        color $black
+        color white
         cursor pointer
-        font-weight bold
+        font-weight 700
         text-align center
         border 2px solid $black
+        background-color $black
         transition all $basetransition
-        outline-color darken($yellow, 15%)
-        background-color lighten($yellow, 15%)
         &:hover
-            color white
-            background-color $black
+            color $black
             transition all $pseudotransition
+            background-color lighten($yellow, 15%)
 
 .replace__result
     padding 1.5vw
@@ -82,8 +81,8 @@ main
         transition all $basetransition
         &:hover
             color $black
-            background-color #ffd426
             transitiion all $pseudotransition
+            background-color lighten($yellow, 15%)
 
 .warning
     top 1em
@@ -100,4 +99,3 @@ main
         margin-bottom 0
 
 @import 'mediaqueries.styl'
-@import 'ie.styl'
