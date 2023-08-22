@@ -15,10 +15,8 @@
         <meta name="theme-color" content="#ffffff">
         <link rel="stylesheet" href="assets/css/style.css">
         <link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,700,700i&display=swap" rel="stylesheet">
-
-        <script async src="assets/js/picturefill.min.js"></script>
     </head>
-    <body>
+    <body class="replace">
         <main>
             <div class="warning"><p>Copied!</p></div> <!--  /.warning -->
             <div class="replace__container wrapper space section">
@@ -27,32 +25,24 @@
                     <h2>A simple tool to replace characters.</h2>
                 </header>
                 <div class="content">
-                    <?php
-                        $char_to    = isset($_GET['char-to']) ? $_GET['char-to'] : ' ';
-                        $char_by    = isset($_GET['char-by']) ? $_GET['char-by'] : '.';
-                        $data       = isset($_GET['input-text']) ? $_GET['input-text'] : 'This is a replace example.';
-                    ?>
                     <form action="" method="get" class="replace__form">
                         <fieldset class="replace__char-to">
                             <label for="char-to">Insert the character or characters you want to be replaced <span>(defaults to 'space')</span>.</label>
-                            <input type="text" id="char-to" name="char-to" value="<?php echo $char_to; ?>" />
+                            <input type="text" id="char-to" name="char-to" value=" " />
                         </fieldset> <!--  /.replace__char-to -->
                         <fieldset class="replace__char-by">
                             <label for="char-by">Insert the character or characters you want to be placed instead. <span>(defaults to 'dot')</span></label>
-                            <input type="text" id="char-by" name="char-by" value="<?php echo $char_by; ?>" />
+                            <input type="text" id="char-by" name="char-by" value="." />
                         </fieldset> <!--  /.replace__char-by -->
                         <fieldset class="replace__input-string">
                             <label>Insert a regular text with spaces.</label>
-                            <textarea id="input-text" name="input-text" placeholder="Insert text here..."><?php echo $data; ?></textarea>
+                            <textarea id="input-text" name="input-text" placeholder="Insert text here...">This is a replace example.</textarea>
                         </fieldset><!--  /.replace__input-string -->
-                        <button class="replace__submit">Replace</button> <!--  /.replace__submit -->
+                        <button id="replace-button" class="replace__submit">Replace</button> <!--  /.replace__submit -->
                     </form>
                     <article class="replace__result">
-                        <p id="replaced-text"><?php 
-                            $result = str_replace($char_to, $char_by, $data);
-                            echo $result; 
-                        ?></p>
-                        <button onclick="copyElementText('replaced-text')">Copy text</button>
+                        <p id="replaced-text">This.is.a.replace.example.</p>
+                        <button id="copy-replace-text">Copy text</button>
                     </article> <!--  /.replace__result -->
                 </div> <!--  /.content -->
             </div> <!--  /.wrapper -->
