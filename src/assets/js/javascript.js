@@ -2,18 +2,15 @@ const replaceButton = document.getElementById('replace-button');
 let text = document.getElementById('input-text');
 let charTo = document.getElementById('char-to');
 let charBy = document.getElementById('char-by');
-console.log()
-replaceButton.addEventListener('click', () => { replace(text, charTo, charBy, event) })
+replaceButton.addEventListener('click', () => { replace(text, charTo, charBy, event) });
 
 function replace(text, charTo, charBy, event) {
     event.preventDefault();
     let textValue = text.value;
     let charToValue = charTo.value;
     let charByValue = charBy.value;
-    console.log(textValue + ' - ' + charToValue + ' - ' + charByValue);
     let replacedText = textValue.replaceAll(charToValue, charByValue);
     let result = document.getElementById('replaced-text');
-    console.log(replacedText);
     result.textContent = replacedText;
 }
 
